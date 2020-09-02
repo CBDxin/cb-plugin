@@ -10,7 +10,8 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:cb-plugin.helloWorld"
+		"onCommand:cb-plugin.helloWorld",
+		"onLanguage:less"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -18,6 +19,16 @@
 			{
 				"command": "cb-plugin.helloWorld",
 				"title": "Hello World"
+			}
+		],
+		"snippets": [
+			{
+				"language": "javascript",
+				"path": "./src/snippets/snippets.json"
+			},
+			{
+				"language": "typescript",
+				"path": "./src/snippets/snippets.json"
 			}
 		]
 	},

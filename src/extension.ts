@@ -2,9 +2,13 @@ import * as vscode from 'vscode';
 const path = require('path');
 const fs = require('fs');
 
+import lessCompletion from './lessCompletion'
+
 
 export function activate(context: vscode.ExtensionContext) {
 	console.log('Congratulations, your extension "cb-plugin" is now active!');
+
+	lessCompletion(context);
 
 	let disposable = vscode.commands.registerCommand('cb-plugin.helloWorld', (uri) => {
 		vscode.window.showInformationMessage('Hello World from cb-plugin!');

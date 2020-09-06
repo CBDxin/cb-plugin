@@ -24,12 +24,8 @@
 		],
 		"snippets": [
 			{
-				"language": "javascript",
-				"path": "./src/snippets/snippets.json"
-			},
-			{
-				"language": "typescript",
-				"path": "./src/snippets/snippets.json"
+				"language": "less",
+				"path": "./src/snippets/css.json"
 			}
 		]
 	},

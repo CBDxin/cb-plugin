@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as vscode from 'vscode';
-import getCssClassNames from './getCssClassNames';
+import findCssClassNames from './findCssClassNames';
 
 const classMatchReg = /className=["|']/;
 
@@ -12,13 +12,11 @@ function provideCompletionItems(document: vscode.TextDocument, position: vscode.
   const directory: string = path.dirname(document.fileName);
 
   const rawClasses = classMatchReg.test(text);
-  console.log(rawClasses)
   if (!rawClasses) {
     return [];
   }
 
-  const classNames = getCssClassNames(directory + '/style.less');
-  console.log(classNames)
+  const classNames = findCssClassNames(directory + '/style.less');
 
   return classNames.map((className) => {
     const completionItem = new vscode.CompletionItem(className, vscode.CompletionItemKind.Variable);

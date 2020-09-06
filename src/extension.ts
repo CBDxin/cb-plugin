@@ -4,6 +4,7 @@ const fs = require('fs');
 
 import lessCompletion from './lessCompletion';
 import classNameCompletion from './classNameCompletion';
+import cssAliasCompletion from './cssAliasCompletion';
 
 
 export function activate(context: vscode.ExtensionContext) {
@@ -11,6 +12,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	lessCompletion(context);
 	classNameCompletion(context);
+	cssAliasCompletion(context);
 
 	let disposable = vscode.commands.registerCommand('cb-plugin.helloWorld', (uri) => {
 		vscode.window.showInformationMessage('Hello World from cb-plugin!');

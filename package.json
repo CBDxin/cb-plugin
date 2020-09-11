@@ -10,18 +10,13 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:cb-plugin.helloWorld",
+		"onCommand:cb-plugin.codelensAction",
 		"onLanguage:less",
 		"onLanguage:typescriptreact"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"commands": [
-			{
-				"command": "cb-plugin.helloWorld",
-				"title": "Hello World"
-			}
-		],
+		"commands": [],
 		"snippets": [
 			{
 				"language": "less",

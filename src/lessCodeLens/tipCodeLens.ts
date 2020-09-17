@@ -1,8 +1,7 @@
-import { CodeLens, Range, WorkspaceFolder, workspace } from "vscode";
+import { CodeLens, Range } from "vscode";
 
 export default class TipCodeLens extends CodeLens {
   constructor(
-    rootPath: WorkspaceFolder | typeof workspace,
     fileName: string,
     range: Range,
     alias: string,

@@ -1,4 +1,3 @@
-import * as fs from 'fs';
 import * as path from 'path';
 import * as vscode from 'vscode';
 import findCssAlias from './findCssAlias';
@@ -16,7 +15,9 @@ function provideCompletionItems(document: vscode.TextDocument, position: vscode.
     return [];
   }
 
-  const aliases = findCssAlias(directory + '/style.less')
+  //@ts-ignore
+  const globalCssPath = path.join(vscode.workspace.workspaceFolders[0].uri._fsPath, vscode.workspace.getConfiguration().get('cb-plugin.globalCssPath'));
+  const aliases = findCssAlias(globalCssPath);
 
   return Object.keys(aliases).map((alias) => {
     const aliasValue = aliases[alias].value;

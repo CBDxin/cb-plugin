@@ -1,16 +1,17 @@
 import * as vscode from 'vscode';
+import * as path from 'path';
 import tipCodeLens from './tipCodeLens';
 import findVariables from '../findLessVariables';
 
-function getRootPath(document:vscode.TextDocument) {
-    const activeWorkspace = vscode.workspace.getWorkspaceFolder(document.uri);
+// function getRootPath(document:vscode.TextDocument) {
+//     const activeWorkspace = vscode.workspace.getWorkspaceFolder(document.uri);
   
-    if (activeWorkspace) {
-      return activeWorkspace;
-    }
+//     if (activeWorkspace) {
+//       return activeWorkspace;
+//     }
   
-    return vscode.workspace;
-}
+//     return vscode.workspace;
+// }
 
 function matchLessVariable(lessVariables: any, targetValue: string){
     for (const key in lessVariables) {
@@ -42,14 +43,19 @@ export class CodelensProvider implements vscode.CodeLensProvider {
             const regex = new RegExp(this.regex);
             const text = document.getText();
             let matches, matchedAlias;
-            const lessVariables = Object.assign({}, findVariables(document.fileName));
-            while ((matches = regex.exec(text)) !== null && (matchedAlias = matchLessVariable(lessVariables, matches[1]))) {
-                const line = document.lineAt(document.positionAt(matches.index).line);
-                const indexOf = line.text.indexOf(matches[1]);
-                const position = new vscode.Position(line.lineNumber, indexOf);
-                const range = document.getWordRangeAtPosition(position, new RegExp(/([^:\s;]+)/g));
-                if (range) {
-                    this.codeLenses.push(new tipCodeLens(getRootPath(document), document.fileName, range, matchedAlias, matches[1]));
+            //@ts-ignore
+            const lessVariablesPath = path.join(vscode.workspace.workspaceFolders[0].uri._fsPath, vscode.workspace.getConfiguration().get('cb-plugin.lessVariablesPath'));
+            const lessVariables = Object.assign({}, findVariables(lessVariablesPath));
+            while ((matches = regex.exec(text)) !== null ) {
+                matchedAlias = matchLessVariable(lessVariables, matches[1])
+                if(matchedAlias){
+                    const line = document.lineAt(document.positionAt(matches.index).line);
+                    const indexOf = line.text.indexOf(matches[1]);
+                    const position = new vscode.Position(line.lineNumber, indexOf);
+                    const range = document.getWordRangeAtPosition(position, new RegExp(/([^:\s;]+)/g));
+                    if (range) {
+                        this.codeLenses.push(new tipCodeLens(document.fileName, range, matchedAlias, matches[1]));
+                    }
                 }
             }
             return this.codeLenses;

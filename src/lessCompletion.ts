@@ -1,14 +1,14 @@
-import * as fs from 'fs';
-import * as path from 'path';
 import * as vscode from 'vscode';
+import * as path from 'path';
 import findVariables from './findLessVariables';
 
 function provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
-  const word = document.getText(document.getWordRangeAtPosition(position));
-  const directory = path.dirname(document.fileName);
   const line = document.lineAt(position);
   const fileName = document.fileName;
-  const variables = Object.assign({}, findVariables(fileName));
+
+  //@ts-ignore
+  const lessVariablesPath = path.join(vscode.workspace.workspaceFolders[0].uri._fsPath, vscode.workspace.getConfiguration().get('cb-plugin.lessVariablesPath'));
+  const variables = Object.assign({}, findVariables(lessVariablesPath));
 
   if (line.text.indexOf(':') === -1) return;
 

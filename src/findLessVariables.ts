@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 
-const LESS_VARIABLES_REG =  /(\@[^:\s]+):([^;]+);/g;
+const LESS_VARIABLES_REG =  /(\@[^:\s]+):[\s]*([^;]+);/g;
 
 interface IVariables {
   [key:string]:string;

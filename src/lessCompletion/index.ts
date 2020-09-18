@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
-import findVariables from './findLessVariables';
+import findVariables from '../utli/findLessVariables';
 
 function provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
   const line = document.lineAt(position);

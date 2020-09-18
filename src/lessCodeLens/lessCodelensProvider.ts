@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 import tipCodeLens from './tipCodeLens';
-import findVariables from '../findLessVariables';
+import findVariables from '../utli/findLessVariables';
 
 // function getRootPath(document:vscode.TextDocument) {
 //     const activeWorkspace = vscode.workspace.getWorkspaceFolder(document.uri);

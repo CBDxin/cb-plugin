@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
-import findCssClassNames from './findCssClassNames';
+import findCssClassNames from '../utli/findCssClassNames';
 
 const classMatchReg = /className=["|']/;
 

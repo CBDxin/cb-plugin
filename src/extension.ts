@@ -1,6 +1,4 @@
 import * as vscode from 'vscode';
-const path = require('path');
-const fs = require('fs');
 
 import lessCompletion from './lessCompletion';
 import classNameCompletion from './classNameCompletion';
@@ -13,9 +11,9 @@ export function activate(context: vscode.ExtensionContext) {
 
 	lessCompletion(context);
 	classNameCompletion(context);
-    cssAliasCompletion(context);
+	cssAliasCompletion(context);
     
-    vscode.languages.registerCodeLensProvider("less", new CodelensProvider());
+  vscode.languages.registerCodeLensProvider("less", new CodelensProvider());
 
 	let disposable = vscode.commands.registerCommand('cb-plugin.codelensAction', (alias, value, fileName, range) => {
 		const editor = vscode.window.activeTextEditor;

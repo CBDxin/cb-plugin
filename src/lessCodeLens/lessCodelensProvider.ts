@@ -15,7 +15,7 @@ import findVariables from '../utli/findLessVariables';
 
 function matchLessVariable(lessVariables: any, targetValue: string){
     for (const key in lessVariables) {
-        if(lessVariables[key] === targetValue){
+        if(lessVariables[key].toLocaleLowerCase() === targetValue.toLocaleLowerCase()){
             return key;
         }
     }

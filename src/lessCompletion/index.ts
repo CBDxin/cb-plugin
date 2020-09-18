@@ -25,7 +25,8 @@ function provideCompletionItems(document: vscode.TextDocument, position: vscode.
   });
 }
 
-export default function lessCompletion(context: vscode.ExtensionContext): void {
+export default function lessCompletion(context: vscode.ExtensionContext) {
+  console.log('Styles auto Complete');
   // Styles auto Complete
   context.subscriptions.push(
     vscode.languages.registerCompletionItemProvider('less', { provideCompletionItems }, '.')

@@ -3,6 +3,7 @@ import * as vscode from 'vscode';
 import lessCompletion from './lessCompletion';
 import classNameCompletion from './classNameCompletion';
 import cssAliasCompletion from './cssAliasCompletion';
+import lessHover from './lessHover';
 import { CodelensProvider } from './lessCodeLens/lessCodelensProvider';
 
 
@@ -12,6 +13,7 @@ export function activate(context: vscode.ExtensionContext) {
 	lessCompletion(context);
 	classNameCompletion(context);
 	cssAliasCompletion(context);
+	lessHover(context);
     
   vscode.languages.registerCodeLensProvider("less", new CodelensProvider());
 

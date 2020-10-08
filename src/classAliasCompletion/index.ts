@@ -1,22 +1,20 @@
-import * as path from 'path';
 import * as vscode from 'vscode';
 import findCssAlias from '../utli/findCssAlias';
+import getPath from '../utli/getPath';
 
-const classMatchReg = /className=["|']/;
+const classMatchReg = /className=["|']([\w- ]*$)/;
 
-function provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
+const provideCompletionItems = async(document: vscode.TextDocument, position: vscode.Position) => {
   const start: vscode.Position = new vscode.Position(position.line, 0);
   const range: vscode.Range = new vscode.Range(start, position);
   const text: string = document.getText(range);
-  const directory: string = path.dirname(document.fileName);
+  const globalCssPath = await getPath.getGlobalCssPath();
 
-  const rawClasses = classMatchReg.test(text);
-  if (!rawClasses) {
-    return [];
+	const rawClasses = text.match(classMatchReg);
+	if (!rawClasses || rawClasses.length === 1 || globalCssPath === '') {
+		return [];
   }
 
-  //@ts-ignore
-  const globalCssPath = path.join(vscode.workspace.workspaceFolders[0].uri._fsPath, vscode.workspace.getConfiguration().get('cb-plugin.globalCssPath'));
   const aliases = findCssAlias(globalCssPath);
 
   return Object.keys(aliases).map((alias) => {
@@ -34,7 +32,8 @@ function provideCompletionItems(document: vscode.TextDocument, position: vscode.
 
 export default function cssAliasCompletion(context: vscode.ExtensionContext): void {
   // Css Alias auto Complete
+  console.log('Css Alias auto Complete');
   context.subscriptions.push(
-    vscode.languages.registerCompletionItemProvider('typescriptreact', { provideCompletionItems }, '"', "'")
+    vscode.languages.registerCompletionItemProvider('typescriptreact', { provideCompletionItems }, '"', "'", ' ')
   );
 }

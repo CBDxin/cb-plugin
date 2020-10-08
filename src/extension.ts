@@ -1,8 +1,8 @@
 import * as vscode from 'vscode';
 
-import lessCompletion from './lessCompletion';
-import classNameCompletion from './classNameCompletion';
-import cssAliasCompletion from './cssAliasCompletion';
+import lessCompletion from './lessVariablesCompletion';
+import classNameCompletion from './classCompletion';
+import cssAliasCompletion from './classAliasCompletion';
 import lessHover from './lessHover';
 import { CodelensProvider } from './lessCodeLens/lessCodelensProvider';
 

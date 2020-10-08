@@ -1,22 +1,21 @@
 import * as vscode from 'vscode';
-import * as path from 'path';
 import findCssClassNames from '../utli/findCssClassNames';
+import getPath from '../utli/getPath';
 
-const classMatchReg = /className=["|']/;
+const classMatchReg = /className=["|']([\w- ]*$)/;
 
-function provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
+const provideCompletionItems = async(document: vscode.TextDocument, position: vscode.Position) => {
   const start: vscode.Position = new vscode.Position(position.line, 0);
   const range: vscode.Range = new vscode.Range(start, position);
   const text: string = document.getText(range);
+  const globalCssPath = await getPath.getGlobalCssPath();
 
-  const rawClasses = classMatchReg.test(text);
-  if (!rawClasses) {
-    return [];
-  }
+  const rawClasses = text.match(classMatchReg);
+	if (!rawClasses || rawClasses.length === 1 || globalCssPath === '') {
+		return [];
+	}
 
-  //@ts-ignore
-  const globalCssPath = path.join(vscode.workspace.workspaceFolders[0].uri._fsPath, vscode.workspace.getConfiguration().get('cb-plugin.globalCssPath'));
-  const classNames = findCssClassNames(globalCssPath);
+  const classNames = await findCssClassNames(globalCssPath);
 
   return classNames.map((className) => {
     const completionItem = new vscode.CompletionItem(className, vscode.CompletionItemKind.Variable);
@@ -27,7 +26,8 @@ function provideCompletionItems(document: vscode.TextDocument, position: vscode.
 
 export default function classNameCompletion(context: vscode.ExtensionContext): void {
   // ClassName auto Complete
+  console.log('ClassName auto Complete');
   context.subscriptions.push(
-    vscode.languages.registerCompletionItemProvider('typescriptreact', { provideCompletionItems }, '"', "'")
+    vscode.languages.registerCompletionItemProvider('typescriptreact', { provideCompletionItems }, '"', "'", ' ')
   );
 }

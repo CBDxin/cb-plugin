@@ -1,6 +1,6 @@
 {
-	"name": "cb-plugin",
-	"displayName": "cb-plugin",
+	"name": "css-helper-plugin",
+	"displayName": "css-helper-plugin",
 	"description": "",
 	"version": "0.0.1",
 	"engines": {
@@ -10,7 +10,7 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:cb-plugin.codelensAction",
+		"onCommand:css-helper-plugin.codelensAction",
 		"onLanguage:less",
 		"onLanguage:typescriptreact"
 	],
@@ -27,12 +27,12 @@
 			"type": "object",
 			"title": "cb-pligin",
 			"properties": {
-				"cb-plugin.lessVariablesPath": {
+				"css-helper-plugin.lessVariablesPath": {
 					"type": "string",
 					"default": "client\\common\\style\\variables.less",
 					"description": "less变量文件路径"
 				},
-				"cb-plugin.globalCssPath": {
+				"css-helper-plugin.globalCssPath": {
 					"type": "string",
 					"default": "client\\common\\style\\index.less",
 					"description": "全局css样式文件路径"

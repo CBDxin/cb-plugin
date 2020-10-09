@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import findCssAlias from '../utli/findCssAlias';
 import getPath from '../utli/getPath';
 
-const classMatchReg = /className=["|']([\w- ]*$)/;
+const classMatchReg = /className=[\s]*["|']([\w- ]*$)/;
 
 const provideCompletionItems = async(document: vscode.TextDocument, position: vscode.Position) => {
   const start: vscode.Position = new vscode.Position(position.line, 0);

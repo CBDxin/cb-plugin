@@ -3,7 +3,7 @@ import findCssClassNames from '../utli/findCssClassNames';
 import getPath from '../utli/getPath';
 import * as path from 'path'; 
 
-const classMatchReg = /className=["|']([\w- ]*$)/;
+const classMatchReg = /className=[\s]*["|']([\w- ]*)/;
 const importMatchReg = /import[\s]*["|']([^:\s;]+)(\.less)["|']/g;
 
 const provideCompletionItems = async(document: vscode.TextDocument, position: vscode.Position) => {

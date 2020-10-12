@@ -1,12 +1,7 @@
 {
-  "cssAlias": {
-    "prefix": "ca",
-    "body": [
-      "/*",
-      "\talias:${0:alias}",
-      "\tdesc:${1:desc}",
-      "*/"
-    ],
-    "description": "Code snippet for 'setTimeout'"
-  }
+	"cssAlias": {
+		"prefix": "ca",
+		"body": ["/*", "\talias:${0:alias}", "\tdesc:${1:desc}", "*/"],
+		"description": "Code snippet for calss alias"
+	}
 }

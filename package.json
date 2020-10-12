@@ -3,6 +3,7 @@
 	"displayName": "css-helper-plugin",
 	"description": "",
 	"version": "0.0.1",
+	"publisher": "liucanbin",
 	"engines": {
 		"vscode": "^1.48.0"
 	},

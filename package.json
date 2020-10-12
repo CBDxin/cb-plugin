@@ -21,7 +21,7 @@
 		"snippets": [
 			{
 				"language": "less",
-				"path": "./src/snippets/css.json"
+				"path": "./snippets/css.json"
 			}
 		],
 		"configuration": {

@@ -1,6 +1,6 @@
 {
 	"cssAlias": {
-		"prefix": "ca",
+		"prefix": "ad",
 		"body": ["/*", "\talias:${0:alias}", "\tdesc:${1:desc}", "*/"],
 		"description": "Code snippet for calss alias"
 	}

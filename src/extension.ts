@@ -16,7 +16,10 @@ export function activate(context: vscode.ExtensionContext) {
   cssAliasCompletion(context);
   lessHover(context);
 
-  vscode.languages.registerCodeLensProvider("less", new CodelensProvider());
+  vscode.languages.registerCodeLensProvider(
+    ["less", "vue"],
+    new CodelensProvider()
+  );
 
   let disposable = vscode.commands.registerCommand(
     "css-helper-plugin.codelensAction",

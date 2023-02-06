@@ -1,6 +1,5 @@
 import * as vscode from "vscode";
 const getColor = require('get-css-colors')
-import getPath from "../utli/getPath";
 import utils from "../utils";
 
 
@@ -8,13 +7,11 @@ const provideHover = async (
   document: vscode.TextDocument,
   position: vscode.Position
 ) => {
-  const word = document.getText(document.getWordRangeAtPosition(position));
-  const lessVariablesPath = await getPath.getLessVariablesPath();
+  let  word = document.getText(document.getWordRangeAtPosition(position));
 
-  if (!word.startsWith("@") || lessVariablesPath === "") {
-    return;
-  }
-
+  // if (!word.startsWith("@") ) {
+  //  return;
+  // }
    // 文件路径
    const allFile = utils.getLocations(document) || [];
 
@@ -22,12 +19,15 @@ const provideHover = async (
    const allVars = utils.getVarsByFiles(allFile);
  
    const allDepVars = utils.getDepVars(allVars);
-
-   
-  if (allDepVars[word].length) {
+  // TODO: VUE 文件需要兼容
+   let  varitem= allDepVars[word]||allDepVars['@'+word];
+  if (varitem) {
     const lastColor = getColor(
-      allDepVars[word][allDepVars[word].length - 1].value
+      varitem[varitem.length - 1].value
     );
+    if(!word.startsWith("@")){
+      word= '@'+word;
+    }
     return new vscode.Hover(`${word}:${lastColor}`);
   }
 };

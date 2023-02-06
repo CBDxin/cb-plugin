@@ -1,6 +1,6 @@
 {
-	"name": "less-helper-plugin",
-	"displayName": "less-helper-plugin",
+	"name": "less-helper-chris",
+	"displayName": "less-helper-chris",
 	"description": "",
 	"version": "0.0.1",
 	"publisher": "chris",
@@ -45,17 +45,17 @@
 		},
 		"configuration": {
 			"type": "object",
-			"title": "css-helper-pligin",
+			"title": "less-helper-chris",
 			"properties": {
 				"lessvarChris.locations": {},
-				"css-helper-plugin.lessVariablesPath": {
+				"less-helper-chris.lessVariablesPath": {
 					"type": "string",
-					"default": "client\\common\\style\\variables.less",
+					"default": "var.less",
 					"description": "less变量文件路径"
 				},
-				"css-helper-plugin.globalCssPath": {
+				"less-helper-chris.globalCssPath": {
 					"type": "string",
-					"default": "client\\common\\style\\index.less",
+					"default": "var.less",
 					"description": "全局css样式文件路径"
 				}
 			}

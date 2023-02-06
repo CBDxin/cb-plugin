@@ -9,7 +9,7 @@ import { CodelensProvider } from "./lessCodeLens/lessCodelensProvider";
 
 export function activate(context: vscode.ExtensionContext) {
   console.log(
-    'Congratulations, your extension "css-helper-plugin" is now active!'
+    'Congratulations, your extension "css-helper-chris" is now active!'
   );
   setLocations(context);// 设置路径的webview
   lessCompletion(context);
@@ -23,7 +23,7 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   let disposable = vscode.commands.registerCommand(
-    "css-helper-plugin.codelensAction",
+    "css-helper-chris.codelensAction",
     (alias, value, fileName, range) => {
       const editor = vscode.window.activeTextEditor;
       editor?.edit((editBuilder) => {

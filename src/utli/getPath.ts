@@ -3,7 +3,7 @@ import * as vscode from "vscode";
 class getPath {
 	public static async getGlobalCssPath() {
 		const globalCssPathArr = await vscode.workspace.findFiles(
-			vscode.workspace.getConfiguration().get("css-helper-plugin.globalCssPath") as string
+			vscode.workspace.getConfiguration().get("css-helper-chris.globalCssPath") as string
 		);
 
 		if (globalCssPathArr.length === 0) {
@@ -18,7 +18,7 @@ class getPath {
 
 	public static async getLessVariablesPath() {
 		const lessVariablesPathArr = await vscode.workspace.findFiles(
-			vscode.workspace.getConfiguration().get("css-helper-plugin.lessVariablesPath") as string
+			vscode.workspace.getConfiguration().get("css-helper-chris.lessVariablesPath") as string
 		);
 
 		if (lessVariablesPathArr.length === 0) {

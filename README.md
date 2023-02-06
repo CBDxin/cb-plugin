@@ -4,7 +4,7 @@
 
 ### 1. className 自动补全
 
-有时候，我们提前定义好一些全局或者是各个组件的样式文件，然后再到 jsx 中去填写 className。这时经常会出现一些令人十分痛苦的情况，例如忘记了定义好的 className，或者是拼写错误导致样式不生效 css-helper-chris 能够帮助我们在填写 jsx 的 className 时，根据 impor 的 less 文件和配置的全局样式文件进行补全提示。
+有时候，我们提前定义好一些全局或者是各个组件的样式文件，然后再到 jsx 中去填写 className。这时经常会出现一些令人十分痛苦的情况，例如忘记了定义好的 className，或者是拼写错误导致样式不生效 less-helper-chris 能够帮助我们在填写 jsx 的 className 时，根据 impor 的 less 文件和配置的全局样式文件进行补全提示。
 ![className 自动补全.gif](https://github.com/CBDxin/img/blob/master/img/jsx-className%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8.gif?raw=true)
 
 ### 2. 通过别名补全 className
@@ -34,5 +34,5 @@
 
 ## 配置
 
-可在设置 -> 扩展 -> css-helper-chris 中设置全局样式文件路径和 less 变量文件路径
+可在设置 -> 扩展 -> less-helper-chris 中设置全局样式文件路径和 less 变量文件路径
 ![img](https://github.com/CBDxin/img/blob/master/img/%E9%85%8D%E7%BD%AE.png?raw=true)

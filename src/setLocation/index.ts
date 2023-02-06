@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import getLocations from '../utli/getLocations';
+import utlis from '../utils';
 
 let currentPanel: vscode.WebviewPanel | undefined = undefined;
 
@@ -11,7 +11,7 @@ function setWebview(
     if (!currentPanel) {
       return;
     }
-  const locations = newLocation || getLocations() || [];
+  const locations = newLocation || utlis.getLocations() || [];
   currentPanel.webview.html = `
     <script>const vscode = acquireVsCodeApi();</script>
     <button onClick="vscode.postMessage({id:'selectFile'});">添加文件</button>
@@ -76,7 +76,7 @@ function registerCommand(context: vscode.ExtensionContext) {
               })
               .then(res => {
                 if (res && res.length) {
-                  const pre = getLocations() || [];
+                  const pre = utlis.getLocations() || [];
                   const newLocation = [...new Set([res[0].fsPath, ...pre])];
                   vscode.workspace
                     .getConfiguration()
@@ -91,7 +91,7 @@ function registerCommand(context: vscode.ExtensionContext) {
                 }
               });
           } else if (message.id === 'delete') {
-            const newLocation = getLocations() || [];
+            const newLocation = utlis.getLocations() || [];
             newLocation.splice(message.index, 1);
             vscode.workspace
               .getConfiguration()
@@ -104,7 +104,7 @@ function registerCommand(context: vscode.ExtensionContext) {
                 setWebview(currentPanel, newLocation);
               });
           } else if (message.id === 'up') {
-            const newLocation = getLocations() || [];
+            const newLocation = utlis.getLocations() || [];
             const item = newLocation.splice(message.index, 1)[0];
             newLocation.splice(
               message.index - 1 >= 0 ? message.index - 1 : newLocation.length,

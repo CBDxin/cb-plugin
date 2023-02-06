@@ -1,6 +1,8 @@
 import * as vscode from "vscode";
-import findVariables from "../utli/findLessVariables";
+const getColor = require('get-css-colors')
 import getPath from "../utli/getPath";
+import utils from "../utils";
+
 
 const provideHover = async (
   document: vscode.TextDocument,
@@ -13,10 +15,23 @@ const provideHover = async (
     return;
   }
 
-  const variables = Object.assign({}, findVariables(lessVariablesPath));
+   // 文件路径
+   const allFile = utils.getLocations(document) || [];
 
-  if (Object.keys(variables).indexOf(word) !== -1) {
-    return new vscode.Hover(`${word}:${variables[word]}`);
+   // 汇总所有变量
+   const allVars = utils.getVarsByFiles(allFile);
+ 
+   const allDepVars = utils.getDepVars(allVars);
+
+   const lastColor = getColor(
+    allDepVars[word][allDepVars[word].length - 1].value
+  );
+
+  if (allDepVars[word].length) {
+    const lastColor = getColor(
+      allDepVars[word][allDepVars[word].length - 1].value
+    );
+    return new vscode.Hover(`${word}:${lastColor}`);
   }
 };
 

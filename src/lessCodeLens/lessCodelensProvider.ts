@@ -2,7 +2,11 @@ import * as vscode from "vscode";
 import * as path from "path";
 import tipCodeLens from "./tipCodeLens";
 import findVariables from "../utli/findLessVariables";
+
+const getColor = require('get-css-colors')
 import getPath from "../utli/getPath";
+
+import utils from "../utils";
 
 // function getRootPath(document:vscode.TextDocument) {
 //     const activeWorkspace = vscode.workspace.getWorkspaceFolder(document.uri);
@@ -15,11 +19,17 @@ import getPath from "../utli/getPath";
 // }
 
 function matchLessVariable(lessVariables: any, targetValue: string) {
+
+  // 可能匹配出多个变量
+	let list = [];
 	for (const key in lessVariables) {
-		if (lessVariables[key].toLocaleLowerCase() === targetValue.toLocaleLowerCase()) {
-			return key;
+		const lastImte= lessVariables[key].slice(-1)[0];
+		if (lastImte.value.toLocaleLowerCase() === targetValue.toLocaleLowerCase()) {
+			list.push(key);
 		}
 	}
+
+	return list;
 }
 
 export class CodelensProvider implements vscode.CodeLensProvider {
@@ -52,17 +62,32 @@ export class CodelensProvider implements vscode.CodeLensProvider {
 			}
 
 			const lessVariables = Object.assign({}, findVariables(lessVariablesPath));
+
+
+			  // 文件路径
+			const allFile = utils.getLocations(document) || [];
+
+			// 汇总所有变量
+			const allVars = utils.getVarsByFiles(allFile);
+
+			const allDepVars = utils.getDepVars(allVars);
 			while ((matches = regex.exec(text)) !== null) {
-				matchedAlias = matchLessVariable(lessVariables, matches[1]);
-				if (matchedAlias) {
+				matchedAlias = matchLessVariable(allDepVars, matches[1]);
+				if (matchedAlias.length) {
 					const line = document.lineAt(document.positionAt(matches.index).line);
 					const indexOf = line.text.indexOf(matches[1]);
 					const position = new vscode.Position(line.lineNumber, indexOf);
 					const range = document.getWordRangeAtPosition(position, new RegExp(/([^:\s;]+)/g));
 					if (range) {
-						this.codeLenses.push(
-							new tipCodeLens(document.fileName, range, matchedAlias, matches[1])
-						);
+						let index= matchedAlias.length;
+						while(index--){
+							this.codeLenses.push(
+								new tipCodeLens(document.fileName, range, matchedAlias[index], matches[1])
+								
+							);
+
+						}
+						
 					}
 				}
 			}

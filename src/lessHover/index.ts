@@ -23,10 +23,7 @@ const provideHover = async (
  
    const allDepVars = utils.getDepVars(allVars);
 
-   const lastColor = getColor(
-    allDepVars[word][allDepVars[word].length - 1].value
-  );
-
+   
   if (allDepVars[word].length) {
     const lastColor = getColor(
       allDepVars[word][allDepVars[word].length - 1].value

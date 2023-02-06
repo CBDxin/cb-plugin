@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-const getColor = require('get-css-colors')
+const getColor = require('get-css-colors');
 import utils from "../utils";
 
 

@@ -37,7 +37,6 @@ export class CodelensProvider implements vscode.CodeLensProvider {
 	private regex: RegExp;
 	private _onDidChangeCodeLenses: vscode.EventEmitter<void> = new vscode.EventEmitter<void>();
 	public readonly onDidChangeCodeLenses: vscode.Event<void> = this._onDidChangeCodeLenses.event;
-
 	constructor() {
 		this.regex = /.:[\s]*([^:\s;]+)/g;
 
@@ -45,7 +44,6 @@ export class CodelensProvider implements vscode.CodeLensProvider {
 			this._onDidChangeCodeLenses.fire();
 		});
 	}
-
 	public provideCodeLenses = async (
 		document: vscode.TextDocument,
 		token: vscode.CancellationToken
@@ -60,9 +58,6 @@ export class CodelensProvider implements vscode.CodeLensProvider {
 			if (lessVariablesPath === "") {
 				return;
 			}
-
-			const lessVariables = Object.assign({}, findVariables(lessVariablesPath));
-
 
 			  // 文件路径
 			const allFile = utils.getLocations(document) || [];

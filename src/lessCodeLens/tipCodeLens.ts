@@ -5,7 +5,7 @@ export default class TipCodeLens extends CodeLens {
 		super(range, {
 			arguments: [alias, value, fileName, range],
 			command: "css-helper-plugin.codelensAction",
-			title: `${value} can be replaced by ${alias},click to replace`,
+			title: `${value} = ${alias}, replace`,
 		});
 	}
 }

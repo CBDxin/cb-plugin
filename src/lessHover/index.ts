@@ -22,9 +22,8 @@ const provideHover = async (
   // TODO: VUE 文件需要兼容
    let  varitem= allDepVars[word]||allDepVars['@'+word];
   if (varitem) {
-    const lastColor = getColor(
-      varitem[varitem.length - 1].value
-    );
+    const lastColor = varitem[varitem.length - 1].value;
+
     if(!word.startsWith("@")){
       word= '@'+word;
     }

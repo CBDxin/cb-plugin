@@ -4,13 +4,14 @@ import lessCompletion from "./lessVariablesCompletion";
 import classNameCompletion from "./classCompletion";
 import cssAliasCompletion from "./classAliasCompletion";
 import lessHover from "./lessHover";
+import setLocations from "./setLocation";
 import { CodelensProvider } from "./lessCodeLens/lessCodelensProvider";
 
 export function activate(context: vscode.ExtensionContext) {
   console.log(
     'Congratulations, your extension "css-helper-plugin" is now active!'
   );
-
+  setLocations(context);// 设置路径的webview
   lessCompletion(context);
   classNameCompletion(context);
   cssAliasCompletion(context);

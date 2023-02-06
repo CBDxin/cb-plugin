@@ -1,9 +1,9 @@
 {
-	"name": "css-helper-plugin",
-	"displayName": "css-helper-plugin",
+	"name": "less-helper-plugin",
+	"displayName": "less-helper-plugin",
 	"description": "",
 	"version": "0.0.1",
-	"publisher": "liucanbin",
+	"publisher": "chris",
 	"engines": {
 		"vscode": "^1.48.0"
 	},
@@ -11,23 +11,48 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:css-helper-plugin.codelensAction",
-		"onLanguage:less",
 		"onLanguage:typescriptreact"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"commands": [],
+		"commands": [
+			{
+				"command": "setLocations",
+				"title": "设置less变量文件路径"
+			  }
+		],
 		"snippets": [
 			{
 				"language": "less",
 				"path": "./snippets/css.json"
 			}
 		],
+
+		"menus": {
+			"editor/context": [
+			  {
+				"when": "editorLangId  == less",
+				"command": "setLocations",
+				"group": "navigation"
+			  }
+			],
+			"explorer/context": [
+			  {
+				"when": "resourceExtname == .less",
+				"command": "setLocations",
+				"group": "navigation"
+			  }
+			]
+		  },
 		"configuration": {
 			"type": "object",
 			"title": "css-helper-pligin",
 			"properties": {
+				"lessvarChris.locations": {
+					"type": "string",
+					"default": "client\\common\\style\\variables.less",
+					"description": "less变量文件路径"
+				},
 				"css-helper-plugin.lessVariablesPath": {
 					"type": "string",
 					"default": "client\\common\\style\\variables.less",

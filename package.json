@@ -19,7 +19,7 @@
 			{
 				"command": "setLocations",
 				"title": "设置less变量文件路径"
-			  }
+			}
 		],
 		"snippets": [
 			{
@@ -27,32 +27,27 @@
 				"path": "./snippets/css.json"
 			}
 		],
-
 		"menus": {
 			"editor/context": [
-			  {
-				"when": "editorLangId  == less",
-				"command": "setLocations",
-				"group": "navigation"
-			  }
+				{
+					"when": "editorLangId  == less",
+					"command": "setLocations",
+					"group": "navigation"
+				}
 			],
 			"explorer/context": [
-			  {
-				"when": "resourceExtname == .less",
-				"command": "setLocations",
-				"group": "navigation"
-			  }
+				{
+					"when": "resourceExtname == .less",
+					"command": "setLocations",
+					"group": "navigation"
+				}
 			]
-		  },
+		},
 		"configuration": {
 			"type": "object",
 			"title": "css-helper-pligin",
 			"properties": {
-				"lessvarChris.locations": {
-					"type": "string",
-					"default": "client\\common\\style\\variables.less",
-					"description": "less变量文件路径"
-				},
+				"lessvarChris.locations": {},
 				"css-helper-plugin.lessVariablesPath": {
 					"type": "string",
 					"default": "client\\common\\style\\variables.less",
@@ -75,13 +70,13 @@
 		"test": "node ./out/test/runTest.js"
 	},
 	"devDependencies": {
-		"@types/vscode": "^1.48.0",
 		"@types/glob": "^7.1.3",
 		"@types/mocha": "^8.0.0",
 		"@types/node": "^14.0.27",
-		"eslint": "^7.6.0",
+		"@types/vscode": "^1.48.0",
 		"@typescript-eslint/eslint-plugin": "^3.8.0",
 		"@typescript-eslint/parser": "^3.8.0",
+		"eslint": "^7.6.0",
 		"glob": "^7.1.6",
 		"mocha": "^8.0.1",
 		"typescript": "^3.8.3",
@@ -90,6 +85,9 @@
 	"dependencies": {
 		"@types/postcss-less": "^3.1.1",
 		"@types/postcss-safe-parser": "^4.0.0",
+		"color-rgba": "^2.4.0",
+		"get-css-colors": "^4.0.0",
+		"less-vars-to-js": "^1.3.0",
 		"postcss": "^8.1.1",
 		"postcss-less": "^3.1.4",
 		"postcss-safe-parser": "^5.0.2"

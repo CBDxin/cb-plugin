@@ -1,33 +1,66 @@
 import * as vscode from "vscode";
+const getColor = require('get-css-colors')
 import findVariables from "../utli/findLessVariables";
-import getPath from "../utli/getPath";
+import utils from "../utils";
 
 const provideCompletionItems = async (
   document: vscode.TextDocument,
   position: vscode.Position
 ) => {
-  const line = document.lineAt(position);
-  const fileName = document.fileName;
-  const lessVariablesPath = await getPath.getLessVariablesPath();
+  // 光标位置不是@不处理
 
-  if (line.text.indexOf(":") === -1 || lessVariablesPath === "") return;
+  if (document.lineAt(position).text[position.character - 1] !== '@') {
+    return;
+  }
 
-  const variables = Object.assign({}, findVariables(lessVariablesPath));
+  // 文件路径
+  const allFile = utils.getLocations(document) || [];
 
-  return Object.keys(variables).map((variable) => {
-    const variableValue = variables[variable];
+  // 汇总所有变量
+  const allVars = utils.getVarsByFiles(allFile);
 
-    const completionItem = new vscode.CompletionItem(
-      variable,
-      vscode.CompletionItemKind.Variable
+  const allDepVars = utils.getDepVars(allVars);
+
+  const total = [];
+  for (let key in allDepVars) {
+    const documentation = allDepVars[key].reduce((pre, value, index) => {
+      return (
+        pre +
+        `${value.key} : ${value.value} ;${
+          index < allDepVars[key].length - 1 ? '\n' : ''
+        }`
+      );
+    }, '');
+
+    const lastColor = getColor(
+      allDepVars[key][allDepVars[key].length - 1].value
     );
 
-    completionItem.detail = variableValue;
-    completionItem.filterText = `${variable}: ${variableValue};`;
-    completionItem.documentation = `${variable}: ${variableValue};`;
-
-    return completionItem;
-  });
+    if (lastColor && lastColor.length) {
+      total.push({
+        detail: lastColor[lastColor.length - 1],
+        label: key,
+        kind: vscode.CompletionItemKind.Color,
+        documentation
+      });
+    } else {
+      total.push({
+        label: key,
+        kind: vscode.CompletionItemKind.Variable,
+        documentation
+      });
+    }
+  }
+  return total.length
+    ? total
+    : [
+        {
+          label: '@less-vars',
+          kind: vscode.CompletionItemKind.Text,
+          documentation:
+            '未找到变量,可在setting.json中设置lessVars.locations为less文件绝对路径'
+        }
+      ];
 };
 
 export default function lessCompletion(context: vscode.ExtensionContext) {
@@ -37,7 +70,7 @@ export default function lessCompletion(context: vscode.ExtensionContext) {
     vscode.languages.registerCompletionItemProvider(
       ["less", "vue"],
       { provideCompletionItems },
-      "."
+      "@"
     )
   );
 }

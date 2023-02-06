@@ -2,8 +2,8 @@ import * as vscode from 'vscode';
 const fs = require('fs');
 const path = require('path');
 const lessToJs = require('less-vars-to-js');
-// const getColor = require('get-css-colors');
-// const colorAlpha = require('color-alpha');
+const getColor = require('get-css-colors');
+const colorAlpha = require('color-alpha');
 
 interface LessToJsConfig {
   resolveVariables?: boolean
@@ -115,21 +115,23 @@ const utils = {
     }
     return allDepVars;
   },
-//   handleEval: (handleStr: string) => {
-//     const colors = [
-//       ...new Set([
-//         ...(getColor(handleStr) || []),
-//         ...(handleStr.match(/\d+\.?\d{0,2}%/g) || [])
-//       ])
-//     ];
-//     for (let i = 0; i < colors.length; i++) {
-//       handleStr = handleStr.replaceAll(colors[i], `'${colors[i]}'`);
-//     }
-//     return handleStr;
-//   },
-//   fade: (a: string, b: string): string => {
-//     return colorAlpha(a, b);
-//   }
+  handleEval: (handleStr: string) => {
+    const colors = [
+      ...new Set([
+        ...(getColor(handleStr) || []),
+        ...(handleStr.match(/\d+\.?\d{0,2}%/g) || [])
+      ])
+    ];
+    for (let i = 0; i < colors.length; i++) {
+
+      //TODO:
+      // handleStr = handleStr.replaceAll(colors[i], `'${colors[i]}'`);
+    }
+    return handleStr;
+  },
+  fade: (a: string, b: string): string => {
+    return colorAlpha(a, b);
+  }
 };
 
 export default utils;

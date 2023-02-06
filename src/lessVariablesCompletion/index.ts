@@ -9,9 +9,10 @@ const provideCompletionItems = async (
 ) => {
   // 光标位置不是@不处理
 
-  if (document.lineAt(position).text[position.character - 1] !== '@') {
-    return;
-  }
+  const line = document.lineAt(position);
+  
+  if (line.text.indexOf(":") === -1 ) {return;}
+
 
   // 文件路径
   const allFile = utils.getLocations(document) || [];
@@ -70,7 +71,7 @@ export default function lessCompletion(context: vscode.ExtensionContext) {
     vscode.languages.registerCompletionItemProvider(
       ["less", "vue"],
       { provideCompletionItems },
-      "@"
+      "."
     )
   );
 }

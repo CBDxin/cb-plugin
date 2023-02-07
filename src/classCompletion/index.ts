@@ -3,7 +3,7 @@ import findCssClassNames from '../utli/findCssClassNames';
 import getPath from '../utli/getPath';
 import * as path from 'path'; 
 
-const classMatchReg = /className=[\s]*["|']([\w- ]*)/;
+const classMatchReg = /(className=[\s]*["|']([\w- ]*))|(class=[\s]*["|']([\w- ]*))/;
 const importMatchReg = /import[\s]*["|']([^:\s;]+)(\.less)["|']/g;
 
 const provideCompletionItems = async(document: vscode.TextDocument, position: vscode.Position) => {
@@ -33,12 +33,12 @@ const provideCompletionItems = async(document: vscode.TextDocument, position: vs
     completionItem.detail = className;
     return completionItem;
   });
-}
+};
 
 export default function classNameCompletion(context: vscode.ExtensionContext): void {
   // ClassName auto Complete
   console.log('ClassName auto Complete');
   context.subscriptions.push(
-    vscode.languages.registerCompletionItemProvider('typescriptreact', { provideCompletionItems }, '"', "'", ' ')
+    vscode.languages.registerCompletionItemProvider(['typescriptreact','vue'], { provideCompletionItems }, '"', "'", ' ')
   );
 }

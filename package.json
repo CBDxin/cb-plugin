@@ -50,12 +50,12 @@
 				"lessvarChris.locations": {},
 				"less-helper-chris.lessVariablesPath": {
 					"type": "string",
-					"default": "client\\common\\style\\variables.less",
+					"default": "var.less",
 					"description": "less变量文件路径"
 				},
 				"less-helper-chris.globalCssPath": {
 					"type": "string",
-					"default": "client\\common\\style\\index.less",
+					"default": "var.less",
 					"description": "全局css样式文件路径"
 				}
 			}

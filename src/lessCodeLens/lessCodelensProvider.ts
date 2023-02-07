@@ -52,12 +52,12 @@ export class CodelensProvider implements vscode.CodeLensProvider {
 			this.codeLenses = [];
 			const regex = new RegExp(this.regex);
 			const text = document.getText();
-			const lessVariablesPath = await getPath.getLessVariablesPath();
+			// const lessVariablesPath = await getPath.getLessVariablesPath();
 			let matches, matchedAlias;
 
-			if (lessVariablesPath === "") {
-				return;
-			}
+			// if (lessVariablesPath === "") {
+			// 	return;
+			// }
 
 			  // 文件路径
 			const allFile = utils.getLocations(document) || [];

@@ -1,10 +1,7 @@
 import * as vscode from "vscode";
-import * as path from "path";
+const rgba = require('color-rgba');
 import tipCodeLens from "./tipCodeLens";
-import findVariables from "../utli/findLessVariables";
 
-const getColor = require('get-css-colors')
-import getPath from "../utli/getPath";
 
 import utils from "../utils";
 
@@ -24,9 +21,14 @@ function matchLessVariable(lessVariables: any, targetValue: string) {
 	let list = [];
 	for (const key in lessVariables) {
 		const lastImte= lessVariables[key].slice(-1)[0];
-		if (lastImte.value.toLocaleLowerCase() === targetValue.toLocaleLowerCase()) {
-			list.push(key);
-		}
+
+			
+	let a= rgba(lastImte.value).toString();
+	let b= rgba(targetValue).toString();
+   // 可能是颜色 兼容 可以转化的颜色
+	if (lastImte.value.toLocaleLowerCase() === targetValue.toLocaleLowerCase()||(!!a&&!!b&&a===b)) {
+		list.push(key);
+	}
 	}
 
 	return list;
@@ -52,12 +54,7 @@ export class CodelensProvider implements vscode.CodeLensProvider {
 			this.codeLenses = [];
 			const regex = new RegExp(this.regex);
 			const text = document.getText();
-			// const lessVariablesPath = await getPath.getLessVariablesPath();
 			let matches, matchedAlias;
-
-			// if (lessVariablesPath === "") {
-			// 	return;
-			// }
 
 			  // 文件路径
 			const allFile = utils.getLocations(document) || [];
@@ -66,6 +63,10 @@ export class CodelensProvider implements vscode.CodeLensProvider {
 			const allVars = utils.getVarsByFiles(allFile);
 
 			const allDepVars = utils.getDepVars(allVars);
+
+			if(!Object.keys(allDepVars).length){
+				return;
+			}
 			while ((matches = regex.exec(text)) !== null) {
 				matchedAlias = matchLessVariable(allDepVars, matches[1]);
 				if (matchedAlias.length) {

@@ -3,7 +3,7 @@
 	"displayName": "less-helper-chris",
 	"description": "less 提示 ",
 	"icon": "images/less_helper_chris.png",
-	"version": "0.0.2",
+	"version": "0.0.4",
 	"publisher": "xy-chris",
 	"engines": {
 		"vscode": "^1.48.0"

@@ -54,5 +54,3 @@
 
 
 
-https://marketplace.visualstudio.com/manage/publishers/xy-chris
-https://dev.azure.com/caohefei1989/_usersSettings/tokens

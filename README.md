@@ -48,3 +48,7 @@
 根据同级以及 vscode 中已打开的 jsx、tsx 文件，自动补全 less 文件的 className。
 ![img](https://github.com/CBDxin/img/blob/master/img/css-className%E8%A1%A5%E5%85%A8%2000_00_00-00_00_30.gif?raw=true)
 
+
+
+https://marketplace.visualstudio.com/manage/publishers/xy-chris
+https://dev.azure.com/caohefei1989/_usersSettings/tokens

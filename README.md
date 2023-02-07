@@ -16,6 +16,9 @@
 ## 1. less 变量 codeLens
 
 有时候我们定义了一些全局的 less 变量，但由于种种原因，如项目成员不清楚已有这样的一堆变量或者对这些变量不熟悉，直接从交互稿上直接复制一些 css 代码等，导致定义好的变量没有被用到，这种情况我们可以通过 codeLens 在页面中给用户一些提示信息，并为用户提供点击使用变量替换原来的值的功能。
+
+### note！   支持颜色转换(rgb rgba keyword HEX、HSL  )后的替换 
+
 ![img](https://github.com/CBDxin/img/blob/master/img/less-codelens%2000_00_00-00_00_30.gif?raw=true)
 
 ### 2. less 变量补全

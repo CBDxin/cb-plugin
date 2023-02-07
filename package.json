@@ -14,10 +14,12 @@
 
 	"keywords": [
 		"less",
+		"tip",
+		"less",
 		"vue",
 		"varless",
 		"color",
-		"@color"
+		"className"
 	  ],
 	"activationEvents": [
 

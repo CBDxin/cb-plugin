@@ -1,7 +1,4 @@
-# less-plugin-chris （vue 文件也可以）
-
-
-
+# less-plugin-chris （兼容vue 项目）
 
 ## 配置(设置项目的变量文件)
 

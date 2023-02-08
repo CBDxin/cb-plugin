@@ -2,7 +2,7 @@
 
 ## 配置(设置项目的变量文件)
 
-可在less 文件左侧 less 右击或者 在 less 文件编辑区右击（如果右击 无效 请更新 vsocde  帮助> 检查更新）
+可在less 或者 js 目录文件右击或者 在 less、js 文件编辑区右击（如果右击 无效 请更新 vsocde  帮助> 检查更新）
 ![image](https://user-images.githubusercontent.com/23721492/217176324-cedb0dfe-b011-4c16-a623-950a5bcc370b.png)
 ![image](https://user-images.githubusercontent.com/23721492/217176425-5bb0f2e8-368b-4c03-bcfa-2671003ae6a1.png)
 

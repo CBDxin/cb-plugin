@@ -11,14 +11,14 @@
 	"categories": [
 		"Other"
 	],
-
 	"keywords": [
+		"var",
 		"less",
 		"tip",
 		"less",
 		"vue",
 		"varless",
-		"color",
+		"colors",
 		"className"
 	  ],
 	"activationEvents": [

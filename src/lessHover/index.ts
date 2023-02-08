@@ -27,7 +27,7 @@ const provideHover = async (
     if(!word.startsWith("@")){
       word= '@'+word;
     }
-    return new vscode.Hover(`${word}:${lastColor}`);
+    return new vscode.Hover(`${word} : ${lastColor}`);
   }
 };
 

@@ -1,7 +1,7 @@
 {
 	"name": "less-helper-chris",
 	"displayName": "less-helper-chris",
-	"description": "less 提示 ",
+	"description": "less变量提示，和全局className 提示 ",
 	"icon": "images/less_helper_chris.png",
 	"version": "0.0.5",
 	"publisher": "xy-chris",

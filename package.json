@@ -1,7 +1,7 @@
 {
 	"name": "less-helper-chris",
 	"displayName": "less-helper-chris",
-	"description": "less变量提示，和全局className 提示 ",
+	"description": "less变量提示,和全局className 提示 ",
 	"icon": "images/less_helper_chris.png",
 	"version": "0.0.5",
 	"publisher": "xy-chris",
@@ -29,7 +29,7 @@
 		"commands": [
 			{
 				"command": "setLocations",
-				"title": "设置less变量文件路径"
+				"title": "设置样式变量文件路径"
 			}
 		],
 		"snippets": [
@@ -44,11 +44,21 @@
 					"when": "editorLangId  == less",
 					"command": "setLocations",
 					"group": "navigation"
+				},
+				{
+					"when": "editorLangId  == javascript",
+					"command": "setLocations",
+					"group": "navigation"
 				}
 			],
 			"explorer/context": [
 				{
 					"when": "resourceExtname == .less",
+					"command": "setLocations",
+					"group": "navigation"
+				},
+				{
+					"when": "resourceExtname == .js",
 					"command": "setLocations",
 					"group": "navigation"
 				}

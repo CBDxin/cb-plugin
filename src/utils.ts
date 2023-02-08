@@ -1,3 +1,4 @@
+import { type } from 'os';
 import * as vscode from 'vscode';
 const fs = require('fs');
 const path = require('path');
@@ -16,12 +17,21 @@ export interface DepValue {
   value: string
 }
 
+export type TempObj= {
+   [key:string]:any
+};
+
 const myRequire = (str: string) => {
   const module = { exports: {} }
   ;((module, exports) => {
     eval(str);
   })(module, module.exports);
-  return module.exports;
+   let varname:TempObj= {};
+   let  a =  module.exports as  TempObj;
+  for(let key  in a ){
+      varname[key[0]==="@"?key:`@${key}`] = a[key];
+  }
+  return varname;
 };
 
 const utils = {
@@ -31,7 +41,6 @@ const utils = {
     if (document) {
       workspace = vscode.workspace.getWorkspaceFolder(document.uri)?.uri.fsPath;
     }
-
     const handlePath = (paths: string[]) => {
       return paths.map(v => {
         if (workspace) {

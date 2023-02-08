@@ -39,7 +39,7 @@ function registerCommand(context: vscode.ExtensionContext) {
       // Otherwise, create a new panel
       currentPanel = vscode.window.createWebviewPanel(
         'setLocations',
-        'chris 帮你设置路径',
+        '设置您的变量路径支持js less 文件',
         columnToShowIn ?? vscode.ViewColumn.One,
         { enableScripts: true }
       );
@@ -72,7 +72,7 @@ function registerCommand(context: vscode.ExtensionContext) {
           } else if (message.id === 'selectFile') {
             vscode.window
               .showOpenDialog({
-                filters: { less: ['less'], javascript: ['js'] }
+                filters: {lessJs: ['js','less'] }
               })
               .then(res => {
                 if (res && res.length) {

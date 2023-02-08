@@ -39,7 +39,7 @@ function registerCommand(context: vscode.ExtensionContext) {
       // Otherwise, create a new panel
       currentPanel = vscode.window.createWebviewPanel(
         'setLocations',
-        '设置您的变量路径支持js less 文件',
+        '设置您的变量路径,支持 *js *less',
         columnToShowIn ?? vscode.ViewColumn.One,
         { enableScripts: true }
       );

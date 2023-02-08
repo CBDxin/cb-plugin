@@ -22,7 +22,9 @@
 		"className"
 	  ],
 	"activationEvents": [
-
+		"onLanguage:less",
+		"onLanguage:vue",
+		"onLanguage:typescriptreact"
 	],
 	"main": "./out/extension.js",
 	"contributes": {

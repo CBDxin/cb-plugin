@@ -21,34 +21,40 @@
 
 ### note！   支持颜色转换(rgb rgba keyword HEX、HSL  )后的替换 
 
-![img](./images/less-codelens%2000_00_00-00_00_30.gif?raw=true)
+![less-codelens 00_00_00-00_00_30](https://user-images.githubusercontent.com/23721492/218014484-b8fe64cb-deee-4f9d-9c22-ae034c2b5700.gif)
+
 
 ### 2. less 变量补全
 
 在键入 less 变量的值时，可根据配置的全局 less 变量文件进行 less 变量的补全。
-![img](./images/less%E5%8F%98%E9%87%8F%E8%A1%A5%E5%85%A8%2000_00_00-00_00_30.gif?raw=true)
+
+![less变量补全 00_00_00-00_00_30](https://user-images.githubusercontent.com/23721492/218014522-4ef3b67d-bc45-461d-b99b-05c35edd7917.gif)
 
 ### 3. less 变量 hover 提示
 
 当 hover 在 less 变量上，会进行对应的键值对提示。
-![img](./images/hover.png?raw=true)
+![hover](https://user-images.githubusercontent.com/23721492/218014540-11263f17-89bc-49ee-a639-19e51442bb80.png)
+
 
 ### 4. className 自动补全
 
 有时候，我们提前定义好一些全局或者是各个组件的样式文件，然后再到 jsx 中去填写 className。这时经常会出现一些令人十分痛苦的情况，例如忘记了定义好的 className，或者是拼写错误导致样式不生效 less-helper-chris 能够帮助我们在填写 jsx 的 className 时，根据 impor 的 less 文件和配置的全局样式文件进行补全提示。
-![className 自动补全.gif](./images/jsx-className%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8.gif?raw=true)
+
+![jsx-className自动补全](https://user-images.githubusercontent.com/23721492/218014579-912fc685-d715-4120-a770-b017bfbd91fb.gif)
 
 ### 5. 通过别名补全 className( 暂时没有用)
 
 但有时候，全局样式文件中的一些 className 难以记住，这时我们可以通过别名识别某个 className。我们可以在全局 className 的前一行敲入 ad 来键入一个代码片段，用于填写别名和 className 的描述，然后就可以通过设置的别名来进行 className 的补全。
-![img](./images/%E5%88%AB%E5%90%8D%E8%A1%A5%E5%85%A8%2000_00_00-00_00_30.gif?raw=true)
 
 
+
+![别名补全 00_00_00-00_00_30](https://user-images.githubusercontent.com/23721492/218014607-4d2535fb-c26d-42c7-8562-6afb142c3807.gif)
 
 ### 6. 自动补全 less 文件的 className( 暂时没有用)
 
 根据同级以及 vscode 中已打开的 jsx、tsx 文件，自动补全 less 文件的 className。
-![img](./images/css-className%E8%A1%A5%E5%85%A8%2000_00_00-00_00_30.gif?raw=true)
+![less变量补全 00_00_00-00_00_30](https://user-images.githubusercontent.com/23721492/218014636-2a14eca0-7971-4817-8c32-1391f1c59432.gif)
+
 
 
 
